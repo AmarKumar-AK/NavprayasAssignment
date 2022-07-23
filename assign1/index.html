@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulb ON/OFF</title>
+    <style>
+        #imageDiv {
+            display: flex;
+            justify-content: center;
+        }
+        img{
+            height: 500px;
+            width: 500px;
+        }
+        #buttonDiv{
+            display: flex;
+            justify-content: center;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+        }
+        #on{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="imageDiv">
+        <img src="on.png" id="on">
+        <img src="off.png" id="off">
+    </div>
+    <br><br>
+    <div id="buttonDiv">
+        <button class="onButton" onclick="turnOn()">Light On</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="offButton" onclick="turnOff()">Light Off</button>
+    </div>
+
+    <script>
+        var on = document.getElementById("on");
+        var off = document.getElementById("off");
+        function turnOff() {
+            on.style.display = "none";
+            off.style.display = "block";
+        }
+
+        function turnOn() {
+            on.style.display = "block";
+            off.style.display = "none";
+        }
+    </script>
+</body>
+</html>

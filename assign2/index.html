@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my Piano</title>
+
+    <style>
+        #piano{
+            display: flex;
+            justify-content: center;
+        }
+        .pianoButton{
+            height: 200px;
+            width: 40px;
+            border: 1px solid black;
+            text-align: center;
+            font-weight: bolder;
+            color: red;
+        }
+
+        #a,#c,#e,#g {
+            background-color: gray;
+        }
+        #b,#d,#f {
+            background-color: yellow;
+        }
+        input {
+            width: 300px;
+            height: 40px;
+            font-size:24px;
+        }
+        button{
+            background-color: rgb(0, 128, 255);
+            color: white;
+            width: 150px;
+            height: 40px;
+            border: none;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2><center>My Piano</center></h2>
+    <div id="piano">
+        <div id="a" class="pianoButton">A</div>
+        <div id="b" class="pianoButton">B</div>
+        <div id="c" class="pianoButton">C</div>
+        <div id="d" class="pianoButton">D</div>
+        <div id="e" class="pianoButton">E</div>
+        <div id="f" class="pianoButton">F</div>
+        <div id="g" class="pianoButton">G</div>
+    </div>
+    <br><br>
+    <center>
+        <h1>Type Your Music</h1>
+        <form id="myForm">
+            <input type="text" name="music" id="music"><br><br><br>
+            <button type="submit" onsubmit="playMusic">PLAY</button>
+        </form>
+        
+    </center>
+
+    <script>
+        var myForm = document.getElementById("myForm");
+        var content = document.getElementById("content");
+
+        myForm.onsubmit = async function(evt) {
+            evt.preventDefault();
+            var music = document.getElementById("music").value;
+            var data = music.split("");
+
+            for(var i=0 ; i<data.length ; i++) {
+                var myData = data[i].toLowerCase()
+                var x = document.getElementById(myData);
+
+                x.style.background = "blue";
+                await waitForTwoSec(1000);
+
+                if(myData == "a" || myData == "c" || myData == "e" || myData == "g") x.style.background = "gray";
+                else if(myData == "b" || myData == "d" || myData == "f") x.style.background = "yellow";
+            }
+        }
+
+        async function waitForTwoSec(miliseconds) {
+            return new Promise((resolve) => setTimeout(resolve, miliseconds));
+        }
+        
+        
+    </script>
+</body>
+</html>
